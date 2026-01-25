@@ -25,7 +25,7 @@
           terminal and file browser.
         </q-card-section>
         <q-card-section v-else-if="state.mode === 'tacagent'">
-          Fix issues with the Tactical RMM Agent service.
+          Fix issues with the DSL RMM Agent service.
         </q-card-section>
         <q-card-actions align="right">
           <q-btn dense flat push label="Cancel" v-close-popup />
@@ -73,7 +73,7 @@ export default {
       try {
         const result = await sendAgentRecovery(
           props.agent.agent_id,
-          state.value
+          state.value,
         );
         notifySuccess(result);
         onDialogOK();

@@ -258,7 +258,7 @@ export default {
         .toLowerCase()
         .replace(/([^a-zA-Z0-9]+)/g, "");
 
-      const fileName = `trmm-${clientStripped}-${siteStripped}-${this.agenttype}-${this.goarch}.exe`;
+      const fileName = `dsl-rmm-${clientStripped}-${siteStripped}-${this.agenttype}-${this.goarch}.exe`;
 
       const data = {
         installMethod: this.installMethod,
