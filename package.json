@@ -1,6 +1,6 @@
 {
   "name": "web",
-  "version": "0.101.56",
+  "version": "0.101.59",
   "private": true,
   "productName": "DSL RMM",
   "scripts": {
