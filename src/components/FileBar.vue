@@ -149,49 +149,6 @@
             </q-list>
           </q-menu>
         </q-btn>
-        <!-- integrations -->
-        <q-btn size="md" dense no-caps flat label="Reporting">
-          <q-menu auto-close>
-            <q-list
-              v-if="
-                $integrations &&
-                $integrations.fileBarIntegrations &&
-                $integrations.fileBarIntegrations.length > 0
-              "
-              dense
-              style="min-width: 100px"
-            >
-              <q-item
-                v-for="integration in $integrations.fileBarIntegrations"
-                :key="integration.name"
-                @click="
-                  integration.type === 'dialog'
-                    ? $q.dialog({ component: integration.component })
-                    : undefined
-                "
-                :to="integration.type === 'route' ? integration.uri : undefined"
-                clickable
-                v-close-popup
-              >
-                <q-item-section>{{ integration.name }}</q-item-section>
-              </q-item>
-            </q-list>
-            <q-list v-else dense style="min-width: 100px">
-              <q-item
-                clickable
-                v-close-popup
-                @click="
-                  notifyWarning(
-                    'Reporting feature requires a Tier 2 or higher sponsorship. Please check the docs for more info.',
-                    10000,
-                  )
-                "
-              >
-                <q-item-section>Reporting Manager</q-item-section>
-              </q-item>
-            </q-list>
-          </q-menu>
-        </q-btn>
       </q-btn-group>
       <q-space />
       <!-- edit core settings modal -->
@@ -254,9 +211,6 @@ import DeploymentTable from "@/components/clients/DeploymentTable.vue";
 import ServerMaintenance from "@/components/modals/core/ServerMaintenance.vue";
 import CodeSign from "@/components/modals/coresettings/CodeSign.vue";
 import PermissionsManager from "@/components/accounts/PermissionsManager.vue";
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { notifyWarning } from "@/utils/notify";
 
 export default {
   name: "FileBar",
@@ -395,11 +349,6 @@ export default {
     showDeployments() {
       this.$q.dialog({
         component: DeploymentTable,
-      });
-    },
-    showReportsManager() {
-      this.$q.dialog({
-        component: ReportsManager,
       });
     },
   },
